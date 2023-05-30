@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
               private validateForm: ValidateFormsService,
               private authService: AuthServices,
               private cookieService: CookieService) {
-    // this.cookieService.deleteAll('/chat/login');
   }
 
   loginForm: FormGroup = this.fb.group({
