@@ -1,0 +1,142 @@
+.container {
+  background: #878e99;
+  overflow: auto;
+  width: 90%;
+  margin-right: 15px;
+  margin-left: 15px;
+  height: 600px;
+}
+
+.container::-webkit-scrollbar {
+  scroll-behavior: auto;
+}
+
+.title {
+  text-align: center;
+  color: #000000;
+  font-size: 11px;
+  margin-bottom: 8px;
+  padding: 2px;
+  height: 25px;
+  border-radius: 2px;
+  /*opacity: .8;*/
+}
+
+.userChat {
+  background: #878e99;
+  padding-bottom: 15px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  cursor: pointer;
+  border: none;
+  border-bottom: solid 1px #737272;
+}
+
+.userChat:hover {
+  color: white;
+  background: #282a2d;
+  opacity: .7;
+  border-radius: 4px;
+}
+
+.userChat:focus{
+  background: #fd4520;
+  color: white;
+  opacity: .9;
+  border-radius: 4px;
+}
+
+.userChat:active {
+  background: #fd4520;
+  color: white;
+  border-radius: 4px;
+}
+
+.userChat img {
+  margin-top: 12px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.userChat .userChatInfo span {
+  font-size: 12px;
+  font-weight: 500;
+  width: 100px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.userChat .userChatInfo p {
+  font-size: 14px;
+  color: lightgray;
+}
+
+.text {
+  font-weight: normal;
+  font-size: 12px;
+  position: relative;
+  top: 25px;
+  right: 100px;
+  overflow: hidden;
+  width: 100%;
+  color: white;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.text2 {
+  font-size: 12px;
+  font-weight: normal;
+  position: relative;
+  top: 25px;
+  right: 100px;
+  overflow: hidden;
+  width: 100%;
+  color: #1e2024;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.iconMess2 {
+  position: relative;
+  top: 23px;
+  color: #45fd45;
+}
+
+.check {
+  position: relative;
+  top: 23px;
+  color: #45fd45;
+}
+
+/*search*/
+
+.search-hero {
+  max-width: 500px;
+  padding-bottom: 15px;
+}
+
+.form-control {
+  width: 100%;
+  border-radius: 2px;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 3px #fd4520;
+  border: 1px solid #fd4520;
+}
+
+.form-control::placeholder  {
+  font-family: FontAwesome;
+}
+
+/*Search*/
+

@@ -1,0 +1,74 @@
+.upload{
+  top: 50px;
+  left:90px;
+  width: 100px;
+  position: relative;
+  align-content: center;
+}
+
+.upload img{
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 6px solid #eaeaea;
+}
+
+.upload .round{
+  position: absolute;
+  top: 96px;
+  right: 0;
+  background: #00B4FF;
+  width: 32px;
+  height: 32px;
+  line-height: 33px;
+  text-align: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/*.upload .round input[type = "file"]{*/
+/*  position: absolute;*/
+/*  transform: scale(2);*/
+/*  opacity: 0;*/
+/*}*/
+
+.upload .round input[type = "text"]{
+  cursor:  pointer;
+  position: absolute;
+  transform: scale(2);
+  opacity: 0;
+}
+
+input[type=file]::-webkit-file-upload-button{
+  cursor: pointer;
+}
+
+.inputName {
+  top: 100px;
+  position: relative;
+  left: 25px;
+  width: 84%;
+  height: 40px;
+  border-radius: 4px;
+  border: none;
+}
+
+.inputName:focus {
+  box-shadow: 0 0 3px #fd4520;
+  border: 1px solid #fd4520;
+}
+
+.inputName:active {
+  box-shadow: 0 0 3px #fd4520;
+  border: 1px solid #fd4520;
+}
+
+.btnContainer {
+  width: 80%;
+  margin-top: 150px;
+  align-content: center;
+  margin-left: 30px;
+}
+
+
+

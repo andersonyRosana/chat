@@ -1,0 +1,33 @@
+<div class="container" id="containerMessages">
+  <div class="mensaje" *ngFor="let mensajeInfoSend of messages">
+    <div class="col" *ngIf="mensajeInfoSend.senderId !== senderId">
+      <div class="float-start containerMessageSend msj">
+        <div class="messageInfo">
+          <img src="assets/images/{{mensajeInfoSend.avatarReceiver}}" alt="">
+          <p class="fecha" *ngIf="mensajeInfoSend.dateMessage">{{ mensajeInfoSend?.dateMessage.toDate() | date: 'mediumTime' }}</p>
+        </div>
+
+        <div class="messageContent">
+          <p>{{ mensajeInfoSend.message }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col" *ngIf="mensajeInfoSend.senderId === senderId">
+      <div class="float-end containerMessageReceiver msj">
+        <div class="messageInfoTwo">
+          <img src="assets/images/{{mensajeInfoSend.avatarSender}}" alt="">
+          <p class="fecha" *ngIf="mensajeInfoSend.dateMessage">{{ mensajeInfoSend?.dateMessage.toDate() | date: 'mediumTime' }}</p>
+        </div>
+
+        <div class="messageContentTwo">
+          <p>{{ mensajeInfoSend.message }}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+

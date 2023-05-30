@@ -1,0 +1,38 @@
+<form [formGroup]="settingForm" (ngSubmit)="sendSetting()">
+
+<div class="upload row">
+  <div class="contImg">
+    <img *ngIf="avatar" src="assets/images/{{avatar}}" alt="">
+    <img *ngIf="!avatar" src="assets/noprofil.jpg" alt="">
+  </div>
+    <!--  <img *ngIf="imagen" src="{{imagen[0]}}" alt="Imagen">-->
+<!--  <div class="col">-->
+<!--    <div class="round">-->
+<!--      <input class="form-control" type="file" accept=".png, .jpg, jepg" multiple (change)="uploadImage($event)" >-->
+<!--      <i class="fa fa-camera" style = "color: #fff;"></i>-->
+<!--    </div>-->
+<!--  </div>-->
+
+  <div class="col">
+    <div class="round">
+      <input class="form-control" type="text" accept=".png, .jpg, jepg" (click)="dialogMethod()">
+      <i class="fa fa-camera" style = "color: #fff;"></i>
+    </div>
+  </div>
+</div>
+
+  <div class="coL">
+    <input class="inputName" formControlName="editName" type="text" placeholder="Editar nombre">
+  </div>
+
+
+  <div class="col">
+    <button class="btn btn-dark btn-lg btnContainer">Guardar cambios</button>
+  </div>
+</form>
+
+
+
+
+
+

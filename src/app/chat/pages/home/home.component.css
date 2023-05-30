@@ -1,0 +1,16 @@
+
+
+.home {
+  height: 900px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home .container {
+  border-radius: 10px;
+  width: 65%;
+  display: flex;
+}
+
+

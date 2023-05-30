@@ -1,0 +1,20 @@
+.messages {
+  background-color: #888888;
+  height: 583px;
+  overflow: auto;
+}
+
+.messages::-webkit-scrollbar {
+  background: #282a2d;
+  width: 7px;
+  height: 8px;
+}
+
+.messages::-webkit-scrollbar-thumb {
+  background: #fd4520;
+  border-radius: 5px;
+}
+
+.messages::-webkit-scrollbar-thumb:active {
+  background-color:  white;
+}

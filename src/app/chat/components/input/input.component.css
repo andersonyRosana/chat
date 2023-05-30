@@ -1,0 +1,48 @@
+.input {
+  height: 60px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+input {
+  width: 100%;
+  border: none;
+  outline: none;
+  color: #2f2d52;
+  font-size: 18px;
+}
+
+input::placeholder {
+  padding-left: 5%;
+  color: lightgray;
+}
+
+.input .send {
+  height: 30px;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.input .send img {
+  height: 24px;
+  cursor: pointer;
+}
+
+.input .send label {
+  cursor: pointer;
+  margin-bottom: 24px;
+  margin-right: 10px;
+}
+
+.input .send button {
+  border: none;
+  margin-right: 20px;
+  padding: 10px 15px;
+  color: white;
+  background-color: #fd4520;
+  cursor: pointer;
+}
+

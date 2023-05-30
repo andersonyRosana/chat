@@ -1,0 +1,25 @@
+<div class="formContainer">
+  <div class="formWrapper">
+    <span class="logo mt-4">
+      <img src="assets/devopts.png" alt="" style="height: 70px; width: 85px; border-radius: 4px">
+    </span>
+    <span class="title">Login</span>
+    <span *ngIf="submitted && loginForm.invalid" class="badge bg-danger">TODOS LOS CAMPOR SON REQUERIDOS</span>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <input class="inputStyle" formControlName="username" type="text" placeholder="Nombre de usuario" />
+      <span *ngIf="validarCampo('username')" class="form-text text-danger" >
+            El campo username no debe tener espacios
+      </span>
+      <input formControlName="password" type="password" placeholder="Contrasena" />
+      <span *ngIf="validarCampo( 'password')" class="form-text text-danger">
+            Tiene que ser mayor a 4 Caracteres
+      </span>
+      <span *ngIf="usernameInValid" class="form-text text-danger ml-4" >
+           USUARIO O CONTRASENA INCORRECTO
+      </span>
+      <button [disabled]="loginForm.invalid" class="btn btn-success styleBotton">Iniciar Sesion</button>
+    </form>
+    <p [routerLink]="['/chat/register']" style="cursor: pointer">Presiona para registrarte
+  </div>
+</div>
+

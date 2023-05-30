@@ -1,0 +1,116 @@
+.formContainer {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.formWrapper {
+  height: 800px;
+  width: 450px;
+  background-color: #878e99;
+  padding: 30px 30px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.formWrapper .logo {
+  color: #000000;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.formWrapper .title {
+  color: #282a2d;
+  font-size: 22px;
+}
+
+.formWrapper .logo .title {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.formWrapper input {
+  padding: 15px;
+  border: none;
+  width: 310px;
+  border: none;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.formWrapper input:focus{
+  border: none;
+  box-shadow: 0 0 3px #fd4520;
+}
+
+.formWrapper .form-text {
+  margin-top: -12px;
+  margin-bottom: -4px;
+}
+
+.formWrapper form {
+  margin-top: 50px;
+}
+
+.formWrapper form, input::placeholder {
+  color: rgb(175, 175, 175);
+}
+
+.formWrapper button {
+  position: relative;
+  left: 23%;
+  width: 150px;
+  background-color: #fd4520;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.formWrapper .logo .title form, label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #8da4f1;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.formWrapper .logo .title form, label, img {
+  width: 32px;
+}
+
+.formWrapper, p {
+  color: #000000;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.titleAvatar {
+  width: 100%;
+  text-align: center;
+}
+
+.camera {
+  color: #4d4d4d;
+  opacity: .4;
+  position: relative;
+  margin-top: -10px;
+  margin-left: 42%;
+}
+
+.camera2 {
+  color: #fd4520;
+  opacity: .8;
+  position: relative;
+  margin-top: 48px;
+  margin-left: 42%;
+}
+
+

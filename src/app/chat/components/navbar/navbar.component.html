@@ -1,0 +1,19 @@
+
+
+<div class='navbar col'>
+  <span class="logo" *ngIf="user">{{ user.name }}</span>
+  <div class="user">
+    <div class="icons" [routerLink]="['chats']">
+      <i class='far fa-comment-alt mt-1' style='font-size:17px;'></i>
+    </div>
+    <div class="icons" [routerLink]="['contact']">
+      <i class="fas fa-address-book mt-1" ></i>
+    </div>
+    <div class="icons" [routerLink]="['setting']">
+      <i class="fas fa-gear mt-1"></i>
+    </div>
+    <img *ngIf="user" src="assets/images/{{user.avatar}}" alt="">
+    <button (click)="logout()">logout</button>
+  </div>
+</div>
+

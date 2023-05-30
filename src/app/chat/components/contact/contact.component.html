@@ -1,0 +1,29 @@
+
+<!--  Search-->
+  <div class="container">
+    <h2 class="title">Selecciona para iniciar una conversacion</h2>
+    <div class="row">
+      <div class="search-hero">
+        <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;">
+      </div>
+      <table class="table table-striped">
+        <thead>
+<!--        <tr>-->
+<!--          <th>Id</th>-->
+<!--        </tr>-->
+        </thead>
+        <tbody>
+        <div *ngFor="let user of users | filter:searchText">
+            <button class="userChat"  (click)="setUserReceiver(user)">
+              <img src="assets/images/{{user.avatar}}" alt="">
+              <div class="userChatInfo">
+                <span>{{ user['name'] }}</span>
+              </div>
+            </button>
+        </div>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<!--  Search-->
+

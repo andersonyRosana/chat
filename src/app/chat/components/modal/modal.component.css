@@ -1,0 +1,30 @@
+*{
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.containerModal {
+  padding: 20px;
+  background: #878e99;
+  max-width: 500px;
+  height: 300px;
+  overflow: auto;
+  border-radius: 30px;
+}
+
+.containerModal::-webkit-scrollbar {
+  scroll-behavior: auto;
+}
+
+.avatar {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  cursor: pointer;
+}
+
+.avatar:active {
+  transform: scale(.8);
+}
+

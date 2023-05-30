@@ -1,0 +1,8 @@
+
+<div mat-dialog-content class="containerModal">
+  <div class="row">
+    <div class="col-4 avatar" *ngFor="let avatar of avatars" (click)="avatarSend(avatar.img)">
+      <img src="assets/images/{{avatar.img}}">
+    </div>
+  </div>
+</div>
