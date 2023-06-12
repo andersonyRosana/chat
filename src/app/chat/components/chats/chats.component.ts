@@ -42,18 +42,39 @@ export class ChatsComponent implements OnInit {
           if (chatSelection) {
             this.users.push({
               name: JSON.parse(chatSelection).name,
-              avatar: JSON.parse(chatSelection).avatar
+              avatar: JSON.parse(chatSelection).avatar,
+              id: JSON.parse(chatSelection).id
             })
           }
         } else if (data.docs.length !== 0) {
-          // sessionStorage.clear();
-          data.docs.forEach(element => {
-            users.push({
-              senderId: element.id,
-              ...element.data()
+            data.docs.forEach(element => {
+              users.push({
+                senderId: element.id,
+                ...element.data()
+              });
             });
-          });
-          this.users = users;
+           this.users = users;
+           const chatSelection = sessionStorage.getItem('chatSelectioned');
+           let user:any = {};
+            if(chatSelection){
+              user = {
+                name: JSON.parse(chatSelection).name,
+                avatar: JSON.parse(chatSelection).avatar,
+                id: JSON.parse(chatSelection).id
+              };
+              for (let userI of this.users) {
+                if(userI.senderId === user.id ){
+                  const objectWithSenderId = this.users.find(user => user.senderId === userI.senderId);
+                  const indiceEncontrado = this.users.indexOf(objectWithSenderId);
+                  this.users.splice(indiceEncontrado, 1);
+                  this.users.unshift(objectWithSenderId);
+                  console.log(this.users);
+                  return
+                }
+              }
+              this.users.push(user);
+              this.users.reverse();
+            }
         }
       });
     }

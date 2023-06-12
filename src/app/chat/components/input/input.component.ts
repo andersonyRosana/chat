@@ -28,6 +28,7 @@ export class InputComponent implements OnInit {
     this.chatServices.addSendMessage(data, data.senderId, data.receiverId);
     this.inputForm.reset();
     this.message.postNewConversation(data.senderId, data.receiverId, sender, receiver);
+    sessionStorage.clear();
   }
 
   loadingData() {

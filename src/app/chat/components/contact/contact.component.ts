@@ -39,7 +39,8 @@ ngOnInit() {
     this.getMessageHistory(user);
     let valuesByEmit: any = {
       avatar: user.avatar,
-      name: user.name
+      name: user.name,
+      id: user.id
     }
     sessionStorage.setItem('chatSelectioned', JSON.stringify(valuesByEmit));
     this.chatServices.dataBySuscribeInChat.emit(valuesByEmit);
