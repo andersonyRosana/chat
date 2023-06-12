@@ -1,7 +1,7 @@
 
 
 <div class='navbar col'>
-  <span class="logo" *ngIf="user">{{ user.name }}</span>
+  <span class="logo" *ngIf="user">{{ user.name | titlecase }}</span>
   <div class="user">
     <div class="icons" [routerLink]="['chats']">
       <i class='far fa-comment-alt mt-1' style='font-size:17px;'></i>

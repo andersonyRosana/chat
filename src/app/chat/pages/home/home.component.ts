@@ -15,9 +15,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
   ngOnInit() {
     const userCookie = this.cookieService.get('userMemory').length;
     setTimeout(() => {
-      console.log(userCookie)
     },8000)
-    console.log(userCookie);
       if(!userCookie) {
         this.router.navigate(['chat/login']);
       }
@@ -26,7 +24,6 @@ export class HomeComponent implements OnInit, AfterViewChecked {
 
   ngAfterViewChecked() {
     const userCookie = this.cookieService.get('userMemory').length;
-    console.log(userCookie);
       if(!userCookie) {
         this.router.navigate(['chat/login']);
       }

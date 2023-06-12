@@ -30,7 +30,7 @@ export class InputComponent implements OnInit {
     this.message.postNewConversation(data.senderId, data.receiverId, sender, receiver);
   }
 
-  loadingData(){
+  loadingData() {
     const  sender = localStorage.getItem('user-login');
     const receiver = localStorage.getItem('user-receiver');
     let senderId = '';
@@ -80,7 +80,7 @@ export class InputComponent implements OnInit {
     let name = '';
     if(user && receiver){
       avatar = JSON.parse(user).avatar
-      senderId = JSON.parse(user).userId;
+      senderId = JSON.parse(receiver).id;
       username = JSON.parse(user).username;
       name = JSON.parse(user).name;
     }
@@ -94,7 +94,5 @@ export class InputComponent implements OnInit {
       lastUpdate: new Date()
     }
   }
-
-
 
 }

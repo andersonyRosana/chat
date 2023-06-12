@@ -1,6 +1,6 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ChatServices} from "../../chat-services";
-import {UserChatI} from "../../interfaces/chat.interface";
+import {IRegister, UserChatI} from "../../interfaces/chat.interface";
 
 @Component({
   selector: 'app-chat',
@@ -9,21 +9,13 @@ import {UserChatI} from "../../interfaces/chat.interface";
 })
 export class ChatComponent {
 
-  dataChat!: UserChatI;
-  dataNombre: string | undefined = ''
-  dataId: string | undefined = ''
+  dataChatSelect: IRegister = {};
 
   constructor( public _chatServices: ChatServices ) {
-    this._chatServices.dataChatSelect.subscribe((data:UserChatI[]) => {
-      data.forEach((element:UserChatI) => {
-        this.dataChat = {
-          id : element.id,
-          username: element.username
-        }
-        this.dataNombre = this.dataChat.username;
-        this.dataId = this.dataChat.id;
+
+      this._chatServices.dataBySuscribeInChat.subscribe((data) => {
+        this.dataChatSelect = data;
       })
-    })
   }
 
 }

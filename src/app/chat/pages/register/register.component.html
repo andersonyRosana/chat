@@ -7,39 +7,37 @@
     <span *ngIf="submitted && registerForm.invalid" class="badge bg-danger">TODOS LOS CAMPOR SON REQUERIDOS</span>
     <form [formGroup]="registerForm" (ngSubmit)="register()">
 
+      <h2 *ngIf="avatarValid === false"  class="titleAvatar">Elige un avatar</h2>
+
+      <label *ngIf="avatarValid == false" (click)="dialogMethod()" class="camera" [ngClass]="{'camera': avatarValid == false}">
+        <i class="fa fa-camera" style = "height: 40px; width: 40px;"></i>
+      </label>
+
+      <img class="avatar" (click)="dialogMethod()" *ngIf="avatarValid == true" src="assets/images/{{avatar}}" alt="">
+
       <input class="inputStyle" formControlName="username" type="text" placeholder="Nombre de Usuario" />
-      <span *ngIf="validarCampo('username')" class="form-text text-danger" >
-            El campo username no debe tener espacios o letras mayusculas
+      <span *ngIf="validarCampo('username')" class="form-text" >
+            Campo obligatorio y no debe tener espacios
       </span>
-      <span *ngIf="usernameInValid" class="form-text text-danger">
+      <span *ngIf="usernameInValid" class="form-text">
             El nombre de usuario {{ registerForm.controls['username'].value }} ya existe
       </span>
 
-      <input class="inputStyle" formControlName="name" type="text" placeholder="Nombre y apellido" />
-      <span *ngIf="validarCampo('name')" class="form-text text-danger" >
+      <input class="inputName" formControlName="name" type="text" placeholder="Nombre y apellido" />
+      <span *ngIf="validarCampo('name')" class="form-text" >
             Introduce el nombre con apellido
       </span>
 
-<!--      <input class="inputStyle" formControlName="email" type="email" placeholder="email" />-->
-<!--      <span *ngIf="validarCampo('email')" class="form-text text-danger" >-->
-<!--            Introduce el correo correctamente-->
-<!--      </span>-->
-
       <input formControlName="password" type="password" placeholder="Contrasena" />
-      <span *ngIf="validarCampo( 'password')" class="form-text text-danger">
+      <span *ngIf="validarCampo( 'password')" class="form-text">
             Tiene que ser mayor a 4 Caracteres
       </span>
 
       <input formControlName="confirmPassword" type="password" placeholder="Confirmar Contrasena" />
-      <span *ngIf="validarCampo( 'confirmPassword')" class="form-text text-danger">
+      <span *ngIf="validarCampo( 'confirmPassword')" class="form-text">
             No es la misma contrasena
       </span>
 
-      <h2 *ngIf="avatarValid === false"  class="titleAvatar">Elige un avatar</h2>
-
-      <label (click)="dialogMethod()" class="camera" [ngClass]="{'camera': avatarValid == false, 'camera2': avatarValid}">
-        <i class="fa fa-camera" style = "height: 40px; width: 40px;"></i>
-      </label>
 
       <button [disabled]="registerForm.invalid || avatarValid === false" class="btn btn-success styleBotton mt-3">Sign in</button>
     </form>

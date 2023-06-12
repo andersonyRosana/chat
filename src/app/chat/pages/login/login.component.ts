@@ -42,31 +42,22 @@ export class LoginComponent implements OnInit {
 
   login() {
     const dataForm = {
-      username: this.loginForm.value.username,
-      password: this.loginForm.value.password
+      username: this.loginForm.value.username.toLowerCase(),
+      password: this.loginForm.value.password.toLowerCase()
     }
     this.authService.getUserByCredentialsByLogin(dataForm.username, dataForm.password).then( data => {
           if(data.docs.length === 0){
             this.usernameInValid = true;
           } else if (data.docs.length > 0) {
-            data.forEach((element:any) => {
-              const user = {
-                avatar: element.data().avatar,
-                userId: element.id,
-                username: element.data().username,
-                name: element.data().name,
-                userIp: element.data().userIp
-              }
-            localStorage.setItem('user-login', JSON.stringify(user));
-              this.cookieService.set('userMemory', 'Cookie para sesion activa', 7);
-              // this.cookieService.set('userMemory', 'Cookie para sesion activa', 7, '/chat/login');
-              // this.cookieService.set('userMemory', 'Cookie para sesion activa', 7, '/chat/register');
-              // this.cookieService.set('userMemory', 'Cookie para sesion activa', 7, '/chat/home/contact');
-              // this.cookieService.set('userMemory', 'Cookie para sesion activa', 7, '/chat/home/chats');
-              // this.cookieService.set('userMemory', 'Cookie para sesion activa', 7, '/chat/home/setting');
-              this.router.navigate(['chat/home/']);
-            });
+            let user = {
+              userId : data.docs[0].id,
+              ...data.docs[0].data()
+            };
 
+            localStorage.clear(); // por borrar solo por prueba
+            localStorage.setItem('user-login', JSON.stringify(user));
+            this.cookieService.set('userMemory', 'Cookie para sesion activa', 7);
+            this.router.navigate(['chat/home/']);
           }
 
       }

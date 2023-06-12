@@ -13,4 +13,13 @@
   display: flex;
 }
 
+@media screen and (max-width: 480px) {
+  .home .container {
+    border-radius: 10px;
+    width: 100%;
+    height: 896px;
+    display: flex;
+  }
+}
+
 

@@ -1,5 +1,15 @@
 
 .sidebar {
   background: #878e99;
-  height: 693px;
+  height: 703px;
 }
+
+@media screen and (max-width: 480px) {
+  .sidebar {
+    position: absolute;
+    width: 100%;
+    background: #878e99;
+    height: 100%;
+  }
+}
+

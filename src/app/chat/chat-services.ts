@@ -18,10 +18,12 @@ export class ChatServices {
 
     db = firebase.firestore();
 
-    dataChatSelect: EventEmitter<any[]> = new EventEmitter<any[]>();
+    dataBySuscribeInChat : EventEmitter<any> = new EventEmitter<any>;
+    dataChatSelect: EventEmitter<any> = new EventEmitter<any>();
     dataMenssageSend: EventEmitter<MessageI> = new EventEmitter<MessageI>();
     getIdSelectionChat: EventEmitter<string> = new EventEmitter<string>();
     dataAvatar: EventEmitter<string> =  new EventEmitter<string>();
+    dataSuscribeFromSetting: EventEmitter<any> = new EventEmitter<any>;
 
     private ip!: string;
 
@@ -56,7 +58,7 @@ export class ChatServices {
       return this.firestore.collection('user').add(users)
     }
 
-    addSendMessage(message: UserChatI, senderId: any, receivedId: string){
+    addSendMessage(message: UserChatI, senderId: string, receivedId: string){
      this.firestore.collection('user').doc(senderId).collection('conversation').doc(receivedId).collection('message').add(message) ;
      this.firestore.collection('user').doc(receivedId).collection('conversation').doc(senderId).collection('message').add(message);
     }
@@ -85,8 +87,13 @@ export class ChatServices {
             });
           });
           let userToRemove: User | null = null;
+          const sender = localStorage.getItem('user-login');
+          let myId = '';
+          if(sender){
+            myId = JSON.parse(sender).userId;
+          }
           for (let user of dataArr) {
-            if (this.getMyIp() == user.userIp) { //tomando el valor del usuario comforme al ip
+            if (myId == user.id) { //tomando el valor del usuario comforme al ip
               userToRemove = user;
             }
           }
@@ -108,12 +115,17 @@ export class ChatServices {
       });
     }
 
-    async getUserId(id: string):Promise<any>{
+    async getUserId(id: string){
       const myQuery = this.firestore.collection('user').doc(id)
-      return myQuery.get()
+      return myQuery.get();
     }
 
-    updateUserByIp(id:string, avatar:string, username:string){
+  async getUserUsindSnapshot(id: string):Promise<any>{
+    const myQuery = this.firestore.collection('user').doc(id)
+    return myQuery
+  }
+
+    updateUserById(id:string, avatar:string, username:string){
       const myQuery = this.db.collection('user').doc(id).update({
         avatar: avatar,
         name: username,
@@ -127,7 +139,7 @@ export class ChatServices {
       unread: false
     })
     return myQuery
-  }
+    }
 
     getUserByIp(ip: string){
       return this.db.collection('user').where('userIp', '==', ip).get();

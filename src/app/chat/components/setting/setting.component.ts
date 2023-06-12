@@ -3,6 +3,7 @@ import {ChatServices} from "../../chat-services";
 import {MatDialog} from "@angular/material/dialog";
 import {ModalComponent} from "../modal/modal.component";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-setting',
@@ -14,6 +15,7 @@ export class SettingComponent implements OnInit {
   imagen: any[] = [];
   file: any[] =[];
   avatar: string = '';
+  currentName = '';
 
   settingForm : FormGroup = this.fb.group({
     editName: [ '', [ Validators.required, Validators.minLength(3) ]],
@@ -21,14 +23,19 @@ export class SettingComponent implements OnInit {
 
   constructor(private chatService: ChatServices,
               public dialog: MatDialog,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              private _toastr: ToastrService) {
     this.chatService.dataAvatar.subscribe(data => {
       this.avatar = data;
     });
   }
 
   ngOnInit() {
-    // this.getimages();
+    const sender = localStorage.getItem('user-login');
+    if(sender){
+      this.currentName = JSON.parse(sender).name; //opteniendo mi nombre actual para colocarlo por defecto en la vista
+      this.avatar = JSON.parse(sender).avatar;
+    }
   }
 
   dialogMethod(){
@@ -37,8 +44,27 @@ export class SettingComponent implements OnInit {
 
   sendSetting(){
     const data = this.getDatas();
-    this.chatService.updateUserByIp(data.myId, data.avatar, data.name);
+    this.chatService.updateUserById(data.myId, data.avatar, data.name);
     this.settingForm.reset();
+    this.currentName = '';
+    this._toastr.success('Actualizado con exito', 'Cambios realizados', {
+      positionClass: 'toast-bottom-left'
+    });
+    this.getDataInStorage(data.avatar, data.name);
+  }
+
+  getDataInStorage(avatar:string, name:string){
+    const sender = localStorage.getItem('user-login');
+    if(sender){
+      let data: any = {
+        avatar: avatar,
+        name: name,
+        username : JSON.parse(sender).username,
+        userId : JSON.parse(sender).userId,
+        userIp : JSON.parse(sender).userIp
+      }
+      this.chatService.dataSuscribeFromSetting.emit(data);
+    }
   }
 
   getDatas(){

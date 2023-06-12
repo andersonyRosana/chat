@@ -1,7 +1,7 @@
 .container {
   background: #878e99;
   overflow: auto;
-  width: 90%;
+  width: 100%;
   margin-right: 15px;
   margin-left: 15px;
   height: 600px;
@@ -19,19 +19,19 @@
   padding: 2px;
   height: 25px;
   border-radius: 2px;
-  /*opacity: .8;*/
 }
 
 .userChat {
   background: #878e99;
-  padding-bottom: 15px;
-  width: 100%;
   display: flex;
   align-items: center;
   gap: 10px;
   color: white;
   cursor: pointer;
+  padding-top: 10px;
   border: none;
+  width: 92%;
+  height: 60px;
   border-bottom: solid 1px #737272;
 }
 
@@ -56,20 +56,22 @@
 }
 
 .userChat img {
-  margin-top: 12px;
+  margin-top: -7px;
   width: 42px;
   height: 42px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.userChat .userChatInfo span {
-  font-size: 12px;
-  font-weight: 500;
-  width: 100px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+.spanName {
+  padding-top: 4px;
+  margin-left: 5px;
+  display: flex;
+}
+
+.containerInfo {
+  display: block;
+  width: 230px;
 }
 
 .userChat .userChatInfo p {
@@ -78,43 +80,48 @@
 }
 
 .text {
+  display: flex;
+  padding-top: 2px;
+  margin-left: 5px;
   font-weight: normal;
-  font-size: 12px;
-  position: relative;
-  top: 25px;
-  right: 100px;
-  overflow: hidden;
-  width: 100%;
+  font-size: 11px;
+  max-width: 90%;
   color: white;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .text2 {
-  font-size: 12px;
+  margin-left: 5px;
+  display: flex;
+  padding-top: 2px;
+  font-size: 11px;
+  max-width: 90%;
   font-weight: normal;
-  position: relative;
-  top: 25px;
-  right: 100px;
-  overflow: hidden;
-  width: 100%;
   color: #1e2024;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
-.iconMess2 {
+.iconMess {
   position: relative;
-  top: 23px;
+  top: 6px;
+  right: 10px;
   color: #45fd45;
 }
 
 .check {
   position: relative;
-  top: 23px;
+  top: 9px;
+  right: 10px;
   color: #45fd45;
+}
+
+.check2 {
+  position: relative;
+  top: 9px;
+  right: 10px;
+  color: #4d4d4d;
 }
 
 /*search*/

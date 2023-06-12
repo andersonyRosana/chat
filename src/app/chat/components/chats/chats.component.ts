@@ -1,7 +1,7 @@
-import {Component, OnChanges, OnInit} from '@angular/core';
+import {AfterViewInit, Component, DoCheck, OnChanges, OnInit} from '@angular/core';
 import { ChatServices } from "../../chat-services";
-import {IUser} from "../../interfaces/chat.interface";
 import {UsersService} from "../../../shared/services/users.service";
+import {IRegister} from "../../interfaces/chat.interface";
 
 @Component({
   selector: 'app-chats',
@@ -17,33 +17,17 @@ export class ChatsComponent implements OnInit {
 
   id: any;
   users: any[] = [];
-  messages: any[] = [];
+  messages: any[]  = [];
+  seen!: boolean;
 
-  constructor(private chatServices: ChatServices, private usersService: UsersService) { }
-
+  constructor(private chatServices: ChatServices, private usersService: UsersService) {}
 
   ngOnInit() {
-    this.getUserByIp();
     this.getUsers();
     const id = localStorage.getItem('user-receiver');
     if(id){
       this.id = JSON.parse(id).id;
     }
-  }
-
-  getUserByIp(){
-    const ip = this.chatServices.getMyIp();
-    this.chatServices.getAllUsers().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        if(ip === doc.data()['userIp']){
-          const user = {
-            userId: doc.id,
-            ...doc.data()
-          }
-          localStorage.setItem('user-login', JSON.stringify(user));
-        }
-      });
-    });
   }
 
   /*get conversations*/
@@ -53,13 +37,24 @@ export class ChatsComponent implements OnInit {
       const id = JSON.parse(myUser).userId;
       this.usersService.getConversations(id).onSnapshot(data => {
         let users: any[] = [];
-        data.docs.forEach(element => {
-          users.push({
-            senderId: element.id,
-            ...element.data()
+        if(data.docs.length === 0) {
+          const chatSelection = sessionStorage.getItem('chatSelectioned');
+          if (chatSelection) {
+            this.users.push({
+              name: JSON.parse(chatSelection).name,
+              avatar: JSON.parse(chatSelection).avatar
+            })
+          }
+        } else if (data.docs.length !== 0) {
+          // sessionStorage.clear();
+          data.docs.forEach(element => {
+            users.push({
+              senderId: element.id,
+              ...element.data()
+            });
           });
-        });
-        this.users = users;
+          this.users = users;
+        }
       });
     }
   }
@@ -77,10 +72,18 @@ export class ChatsComponent implements OnInit {
       avatar: user.avatar,
       id: user.senderId,
       register: user.lastMessage,
-      username: user.username
+      username: user.username,
+      name: user.name
     };
+    let valuesByEmit: any = {
+      avatar: user.avatar,
+      name: user.name
+    }
+
+    this.chatServices.dataBySuscribeInChat.emit(valuesByEmit);
     localStorage.setItem('user-receiver', JSON.stringify(userReceiver));
     this.getMessageHistory(userReceiver);
+
   }
 
   getMessageHistory(user: any){

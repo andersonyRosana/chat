@@ -37,6 +37,13 @@ ngOnInit() {
   setUserReceiver(user:any){
     localStorage.setItem('user-receiver', JSON.stringify(user));
     this.getMessageHistory(user);
+    let valuesByEmit: any = {
+      avatar: user.avatar,
+      name: user.name
+    }
+    sessionStorage.setItem('chatSelectioned', JSON.stringify(valuesByEmit));
+    this.chatServices.dataBySuscribeInChat.emit(valuesByEmit);
+    this.router.navigate(['chat/home/chats']);
   }
 
   getMessageHistory(user: any){

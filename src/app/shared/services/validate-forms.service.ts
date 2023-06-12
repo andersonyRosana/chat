@@ -10,7 +10,7 @@ export class ValidateFormsService {
   db = firebase.firestore();
 
   public name: string = '([a-zA-Z]+) ([a-zA-Z]+)';  // para validar conforme a los caracteres de ala a z en minusculas y en mayuscaulas
-  public username: string = '^[a-z0-9]{2,16}$';
+  public username: string = '^[a-zA-z0-9]{2,16}$';
 
   public emailPattern: string = '[^@ \\t\\r\\n]+@gmail+\\.[^@ \\t\\r\\n]+';
 

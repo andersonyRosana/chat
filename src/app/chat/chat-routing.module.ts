@@ -17,7 +17,7 @@ const routes: Routes = [
         path: "home",
         component: HomeComponent,
         children: [
-          {path: '', redirectTo: 'contact', pathMatch: 'full'},
+          {path: '', redirectTo: 'chats', pathMatch: 'full'},
           {path: 'chats', component: ChatsComponent},
           {path: 'contact', component: ContactComponent},
           {path: 'setting', component: SettingComponent}

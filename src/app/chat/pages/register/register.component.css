@@ -7,7 +7,7 @@
 
 .formWrapper {
   height: 800px;
-  width: 450px;
+  width: 540px;
   background-color: #878e99;
   padding: 30px 30px;
   border-radius: 10px;
@@ -43,18 +43,21 @@
   margin-bottom: 10px;
 }
 
-.formWrapper input:focus{
+.formWrapper input:focus {
   border: none;
   box-shadow: 0 0 3px #fd4520;
 }
 
 .formWrapper .form-text {
+  margin-left: -14px;
+  color: black;
+  font-size: 10px;
   margin-top: -12px;
   margin-bottom: -4px;
 }
 
 .formWrapper form {
-  margin-top: 50px;
+  margin-top: 18px;
 }
 
 .formWrapper form, input::placeholder {
@@ -103,14 +106,19 @@
   position: relative;
   margin-top: -10px;
   margin-left: 42%;
+  margin-bottom: 20px;
 }
 
-.camera2 {
-  color: #fd4520;
-  opacity: .8;
-  position: relative;
-  margin-top: 48px;
-  margin-left: 42%;
+.avatar {
+  width: 90px;
+  height: 90px;
+  margin-left: 34%;
+  margin-top: 18px;
+  padding-bottom: 15px;
+}
+
+.inputName {
+  text-transform: capitalize;
 }
 
 

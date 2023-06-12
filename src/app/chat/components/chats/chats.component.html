@@ -1,23 +1,21 @@
 <script src="../messageSend/message.component.ts"></script>
 <div class="container">
-  <h2 class="title">Conversaciones</h2>
-
-      <div *ngFor="let user of users | filter:searchText">
-        <button class="userChat col" id="userchat" (click)="setUserReceiver(user)">
-          <img *ngIf="user.avatar === 'absent.png'" src="assets/images/absent.png" alt="">
-          <img *ngIf="user.avatar !== 'absent.png'" src="assets/images/{{user.avatar}}" alt="">
-          <div class="userChatInfo">
-            <span>{{ user.name | titlecase }}</span>
-          </div>
-          <h5 [ngClass]="(user.unread && user.senderId === user.userId ) ? 'text2' : 'text'">{{user.message}}</h5>
-          <i *ngIf="user.unread" [ngClass]="(user.unread && user.senderId === user.userId ) ? 'iconMess2' : ''" class="bi bi-envelope-exclamation iconMess mt-1"></i>
-          <i *ngIf="!user.unread "class="bi bi-check-all check"></i>
-
-        </button>
+  <h2 *ngIf="users.length !== 0" class="title">Conversaciones</h2>
+  <h2 *ngIf="users.length === 0" class="title">Seleciona un contacto para iniciar una conversasion.</h2>
+  <div *ngFor="let user of users | filter:searchText">
+    <button class="userChat col" id="userchat" (click)="setUserReceiver(user)">
+      <img *ngIf="user.avatar === 'absent.png'" src="assets/images/absent.png" alt="">
+      <img *ngIf="user.avatar !== 'absent.png'" src="assets/images/{{user.avatar}}" alt="">
+      <div class="containerInfo">
+        <span class="spanName">{{ user.name | titlecase }}</span>
+        <h5 [ngClass]="(user.unread && user.senderId === user.userId ) ? 'text2' : 'text'">{{user.message | titlecase}}</h5>
       </div>
-
+      <i *ngIf="user.unread" [ngClass]="(user.unread && user.senderId === user.userId ) ? 'iconMess' : ''" class="bi bi-envelope-exclamation iconMess mt-1"></i>
+<!--      <i *ngIf="seen === false" class="bi bi-check2 check"></i>-->
+<!--      <i *ngIf="seen === true" class="bi bi-check2-all check"></i>-->
+    </button>
+  </div>
 </div>
-
 
 
 

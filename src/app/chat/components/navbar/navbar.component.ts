@@ -5,45 +5,45 @@ import {ChatServices} from "../../chat-services";
 import {publicIpv4} from "public-ip";
 import {Router} from "@angular/router";
 import {CookieService} from "ngx-cookie-service";
+import {IRegister} from "../../interfaces/chat.interface";
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit{
+export class NavbarComponent {
 
-  user: any
+  user: IRegister = {};
 
-  constructor( private chatService: ChatServices, private router: Router, private cookieService: CookieService) {
-
-  }
+  constructor( private chatService: ChatServices, private router: Router, private cookieService: CookieService) {}
 
   ngOnInit() {
-    this.getUser()
+    this.getUser();
   }
 
   getUser(){
-    const myIp = this.chatService.getMyIp();
-    this.chatService.getUserByIp(myIp).then(doc => {
-      doc.docs.map((element:any) => {
+    const miUser = localStorage.getItem('user-login');
+    if(miUser) {
+      this.user = {
+        name: JSON.parse(miUser).name,
+        avatar: JSON.parse(miUser).avatar
+      }
+      this.chatService.dataSuscribeFromSetting.subscribe((data: any) => {
+        this.user = {};
+        localStorage.setItem('user-login', JSON.stringify(data));
         this.user = {
-          avatar: element.data().avatar,
-          name: element.data().name
+          name: data.name,
+          avatar: data.avatar
         }
       })
-    })
+    }
   }
 
   logout(){
     localStorage.removeItem('user-login');
-    this.cookieService.deleteAll('/')
-    this.cookieService.deleteAll('/chat/login');
-    this.cookieService.deleteAll('/chat/register');
-    this.cookieService.deleteAll('/chat/home');
-    this.cookieService.deleteAll('/chat/home/contact');
-    this.cookieService.deleteAll('/chat/home/chats');
-    this.cookieService.deleteAll('/chat/home/setting');
+    localStorage.removeItem('update');
+    this.cookieService.delete('userMemory');
     this.router.navigate(['/chat/login']);
   }
 }

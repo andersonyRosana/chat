@@ -13,21 +13,21 @@
 <!--    </div>-->
 <!--  </div>-->
 
-  <div class="col">
-    <div class="round">
-      <input class="form-control" type="text" accept=".png, .jpg, jepg" (click)="dialogMethod()">
-      <i class="fa fa-camera" style = "color: #fff;"></i>
-    </div>
+  <div class="round">
+    <input class="form-control" type="text" accept=".png, .jpg, jepg" (click)="dialogMethod()">
+    <i class="fa fa-camera" style = "color: #fff;"></i>
   </div>
+
 </div>
 
   <div class="coL">
-    <input class="inputName" formControlName="editName" type="text" placeholder="Editar nombre">
+    <input *ngIf="!currentName"class="inputName form-control" formControlName="editName" type="text" placeholder="Editar nombre">
+    <input *ngIf="currentName" class="inputName form-control" formControlName="editName" type="text" placeholder="{{currentName}}">
   </div>
 
 
   <div class="col">
-    <button class="btn btn-dark btn-lg btnContainer">Guardar cambios</button>
+    <button class="btn btn-dark btn-lg btnContainer">Guardar</button>
   </div>
 </form>
 

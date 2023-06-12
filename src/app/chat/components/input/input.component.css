@@ -12,10 +12,11 @@ input {
   outline: none;
   color: #2f2d52;
   font-size: 18px;
+  caret-color: #fd4520;
+  padding: 0 25px;
 }
 
 input::placeholder {
-  padding-left: 5%;
   color: lightgray;
 }
 

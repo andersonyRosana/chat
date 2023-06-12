@@ -18,8 +18,44 @@ export class MessagesComponent {
               private rutaActiva: ActivatedRoute) {
   }
 
+  methodToChangeBackground(){
+    const backgrounds = [
+      'fondo-cars.jpg',
+      'fondo.jpg',
+      'fondo-telita2.jpg',
+      'fondo-flor.jpg',
+      'fondo-flores.jpg',
+      'fondo-cuadros.png',
+      'fondo-mar.jpg',
+      'fondo-gato.jpg',
+      'fondo-cars2.jpg',
+      'fondo-triangulo.jpg',
+      'fondo-arbol.jpg',
+      'fondo-accesorios.jpg',
+      'fondo-bola.jpg',
+      'fondo-sofa.jpg',
+      'fondo-gatitos.jpg',
+      'fondo-reloj.jpg',
+      'fondo-leon.jpg',
+      'fondo-ositos.jpg',
+      'fondo-woll.jpg',
+      'fondo-clasico.jpg',
+    ];
+
+    const myElement: any = document.getElementById("messages");
+    let currentBackgroundIndex = 0;
+    setInterval(() => {
+      currentBackgroundIndex++;
+      if (currentBackgroundIndex >= backgrounds.length) {
+        currentBackgroundIndex = 0;
+      }
+      myElement.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('assets/${backgrounds[currentBackgroundIndex]}')`;
+    }, 1800000);
+  }
+
   ngOnInit() {
     this.getMessagesSend();
+    this.methodToChangeBackground();
   }
 
   getReceiverId(){

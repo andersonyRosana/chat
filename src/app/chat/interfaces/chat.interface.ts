@@ -44,12 +44,12 @@ export interface ILogin {
 }
 
 export interface IRegister {
-  avatar: string;
-  username: any;
-  name: string;
-  email: any;
-  password: any;
-  register:  Date;
+  avatar?: string;
+  username?: any;
+  name?: string;
+  email?: any;
+  password?: any;
+  register?:  Date;
 }
 
 

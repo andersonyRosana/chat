@@ -4,11 +4,13 @@
       <div class="float-start containerMessageSend msj">
         <div class="messageInfo">
           <img src="assets/images/{{mensajeInfoSend.avatarReceiver}}" alt="">
-          <p class="fecha" *ngIf="mensajeInfoSend.dateMessage">{{ mensajeInfoSend?.dateMessage.toDate() | date: 'mediumTime' }}</p>
         </div>
 
         <div class="messageContent">
           <p>{{ mensajeInfoSend.message }}</p>
+        </div>
+        <div class="messageInfo">
+          <p class="fecha" *ngIf="mensajeInfoSend.dateMessage">{{ mensajeInfoSend?.dateMessage.toDate() | date: 'mediumTime' }}</p>
         </div>
       </div>
     </div>
@@ -17,11 +19,14 @@
       <div class="float-end containerMessageReceiver msj">
         <div class="messageInfoTwo">
           <img src="assets/images/{{mensajeInfoSend.avatarSender}}" alt="">
-          <p class="fecha" *ngIf="mensajeInfoSend.dateMessage">{{ mensajeInfoSend?.dateMessage.toDate() | date: 'mediumTime' }}</p>
+<!--          <p class="fecha" *ngIf="mensajeInfoSend.dateMessage">{{ mensajeInfoSend?.dateMessage.toDate() | date: 'mediumTime' }}</p>-->
         </div>
 
         <div class="messageContentTwo">
           <p>{{ mensajeInfoSend.message }}</p>
+        </div>
+        <div class="messageInfoTwo">
+          <p class="fecha2" *ngIf="mensajeInfoSend.dateMessage">{{ mensajeInfoSend?.dateMessage.toDate() | date: 'mediumTime' }}</p>
         </div>
       </div>
     </div>

@@ -17,7 +17,7 @@
             <button class="userChat"  (click)="setUserReceiver(user)">
               <img src="assets/images/{{user.avatar}}" alt="">
               <div class="userChatInfo">
-                <span>{{ user['name'] }}</span>
+                <span>{{ user['name'] | titlecase }}</span>
               </div>
             </button>
         </div>

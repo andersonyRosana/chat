@@ -71,14 +71,15 @@ export class RegisterComponent implements OnInit, AfterViewChecked {
 
   register() {
     const formData = {
-      username: this.registerForm.value.username,
-      name: this.registerForm.value.name,
-      // email: this.registerForm.value.email,
+      username: this.registerForm.value.username.toLowerCase(),
+      name: this.registerForm.value.name.toLowerCase(),
       password: this.registerForm.value.password,
       avatar: this.avatar,
       register: new Date(),
       userIp: this.chatServices.getMyIp()
     }
+
+
     this.validateForm.validateUsername(formData.username).then(data => {
       data.forEach(element => {
         element.data() ? this.usernameInValid = true : this.usernameInValid = false;
@@ -102,6 +103,7 @@ export class RegisterComponent implements OnInit, AfterViewChecked {
   }
 
   /*El metodo que llama al componente donde esta el dialogo de los avatars*/
+
   dialogMethod(){
     this.dialog.open(ModalComponent);
   }
